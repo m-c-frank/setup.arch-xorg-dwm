@@ -42,3 +42,8 @@ echo "fstab generated."
 
 echo "Base installation complete. Please run the second script after arch-chroot."
 
+curl -LO https://raw.githubusercontent.com/mcfrank/setup.arch-xorg-dwm/main/2-after-arch-chroot
+
+mv 2-after-arch-chroot.sh /mnt/minimalinstall
+
+echo "run arch-chroot /mnt
