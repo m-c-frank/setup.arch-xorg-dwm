@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Welcome Message
 echo "Welcome to the Arch Linux Installation Helper!"
@@ -9,7 +9,7 @@ echo "Listing all drives:"
 lsblk
 
 # Checking for EFI or BIOS system
-if [ -d /sys/firmware/efi/efivars ]; then
+if [[ -d /sys/firmware/efi/efivars ]]; then
     echo "EFI system detected."
     is_efi=true
 else
@@ -18,15 +18,15 @@ else
 fi
 
 # Ask user to identify the target drive
-read -p "Please enter the device name of the target drive (e.g., sda, sdb): " target_drive
+read "target_drive?Please enter the device name of the target drive (e.g., sda, sdb): "
 echo "You have selected /dev/$target_drive"
 
 # Warning message
 echo "WARNING: All data on /dev/$target_drive will be lost! Proceed with caution."
 
 # Confirmation
-read -p "Are you sure you want to continue? (yes/no): " confirmation
-if [ "$confirmation" != "yes" ]; then
+read "confirmation?Are you sure you want to continue? (yes/no): "
+if [[ "$confirmation" != "yes" ]]; then
     echo "Operation cancelled."
     exit 1
 fi
